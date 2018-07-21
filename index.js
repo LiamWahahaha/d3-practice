@@ -1,69 +1,28 @@
 // javascript
-var data = [80, 100, 56, 120, 180, 30, 40, 120, 160];
 
-var svgWidth = 500, svgHeight = 300, barPadding = 5;
-var barWidth = (svgWidth / data.length);
-
+var svgWidth = 600, svgHeight = 500;
 var svg = d3.select('svg')
     .attr('width', svgWidth)
-    .attr('height', svgHeight);
+    .attr('height', svgHeight)
+    .attr('class', 'svg-container')
 
-var yScale = d3.scaleLinear()
-    .domain([0, d3.max(data)])
-    .range([svgHeight, 0]);
+var line = svg.append('line')
+    .attr('x1', 100)
+    .attr('y1', 50)
+    .attr('x2', 500)
+    .attr('y2', 50)
+    .attr('stroke', 'red')
+    .attr('stroke-width', 3);
 
-var xScale = d3.scaleLinear()
-    .domain([0, d3.max(data)])
-    .range([0, svgWidth])
+var rect = svg.append('rect')
+    .attr('x', 100)
+    .attr('y', 100)
+    .attr('width', 400)
+    .attr('height', 100)
+    .attr('fill', '#9B95FF');
 
-var x_axis = d3.axisBottom().scale(xScale);
-
-var y_axis = d3.axisLeft().scale(yScale);
-
-svg.append('g')
-    .attr('transform', 'translate(50, 10)')
-    .call(y_axis);
-
-var xAxisTranslate = svgHeight - 20;
-
-svg.append('g')
-    .attr('transform', 'translate(50, ' + xAxisTranslate + ')')
-    .call(x_axis);
-
-//var barChart = svg.selectAll('rect')
-//    .data(dataset)
-//    .enter()
-//    .append('rect')
-//    .attr('y', function(d) {
-//        return svgHeight - yScale(d);
-//    })
-//    .attr('height', function(d) {
-//        return yScale(d);
-//    })
-//    .attr('width', barWidth - barPadding)
-//    .attr('transform', function(d, i) {
-//        var translate = [barWidth * i, 0];
-//        return 'translate(' + translate + ')';
-//    });
-
-//d3.select('#btn')
-//    .on('click', function () {
-//        d3.select('body')
-//            .append('h3')
-//            .text('Today is a beautiful day!!');
-//    });
-
-//var text = svg.selectAll('text')
-//    .data(dataset)
-//    .enter()
-//    .append('text')
-//    .text(function(d) {
-//        return d;
-//    })
-//    .attr('y', function(d, i) {
-//        return svgHeight - yScale(d) - 2;
-//    })
-//    .attr('x', function(d, i) {
-//        return barWidth * i;
-//    })
-//.attr('fill', '#A64C38');
+var circle = svg.append('circle')
+    .attr('cx', 300)
+    .attr('cy', 350)
+    .attr('r', 80)
+    .attr('fill', '#7CE8D5');

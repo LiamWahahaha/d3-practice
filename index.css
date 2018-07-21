@@ -10,3 +10,7 @@ html, body {
 .bar {
      fill: #115D8C;
 }
+
+.svg-container {
+    background-color: #FFC988;
+}
